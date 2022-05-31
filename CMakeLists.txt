@@ -38,6 +38,7 @@ endif()
 
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(Pangolin REQUIRED)
+find_package(PCL 1.8 REQUIRED)
 
 include_directories(
 ${PROJECT_SOURCE_DIR}
@@ -110,4 +111,12 @@ target_link_libraries(mono_kitti ${PROJECT_NAME})
 add_executable(mono_euroc
 Examples/Monocular/mono_euroc.cc)
 target_link_libraries(mono_euroc ${PROJECT_NAME})
+
+
+find_package(PCL 1.2 REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_executable(viewer
+Examples/Monocular/test.cc)
+target_link_libraries(viewer ${PCL_LIBRARIES})
 
